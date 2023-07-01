@@ -47,7 +47,7 @@ class TipoHabitacion(DB):
 
     def modificarTipoHabitacion(self,tipoHabitacion):
         val = (tipoHabitacion.getTipoHabitacion(),tipoHabitacion.getIdTipoHabitacion())
-        sql = "UPDATE TIPO_HABITACION SET TIPO_HABITACION = %s WHERE ID_TIPO_HABITACION = %s"
+        sql = "UPDATE tipo_habitacion SET TIPO_HABITACION = %s WHERE ID_TIPO_HABITACION = %s"
         try:
             self.cursor.execute(sql,val)
             self.connect.commit()

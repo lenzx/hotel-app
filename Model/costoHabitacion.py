@@ -67,7 +67,3 @@ class CostoHabitacion(DB):
                 print("No hay costos asignados")
         except Exception as e:
             print("Error: ", e.args)
-
-l1 = CostoHabitacion(7,1,10000)
-l1.quitarCostoHabitacion(l1)
-

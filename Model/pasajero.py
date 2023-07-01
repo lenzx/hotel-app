@@ -65,4 +65,3 @@ class Pasajero(DB):
 
         except Exception as e:
             print("Error: ", e.args)
-            

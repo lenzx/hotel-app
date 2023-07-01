@@ -75,4 +75,3 @@ class Habitacion(DB):
             print('la habitacion a sido eliminada')
         except Exception as e:
             print("Error: ", e.args)
-
