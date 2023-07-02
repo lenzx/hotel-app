@@ -9,6 +9,7 @@ from Model.habitacion import Habitacion
 class HabitacionController:
     def __init__(self):
         self.__habitacion = Habitacion(None,None,None,None,None,None)
+        
     def agregarHabitacion(self,numeroHabitacion,idTipoHabitacion,capacidadMax,orientacion,min_pasajero):
         n_habitacion = numeroHabitacion
         habitacion_tipo = idTipoHabitacion
@@ -17,6 +18,7 @@ class HabitacionController:
         capacidad_min = min_pasajero
         habitacion = Habitacion(n_habitacion,habitacion_tipo,capacidad_max,orientacio_hab,capacidad_min,None)
         self.__habitacion.agregarHabitacion(habitacion)
+
     def eliminarHabitacion(self,numeroHabitacion):
         numero_habitacion = numeroHabitacion
         habitacion = self.__habitacion.verHabitacionId(numero_habitacion)
