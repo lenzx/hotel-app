@@ -28,6 +28,19 @@ class Habitacion(DB):
         return self.__minPasajero
     def getHabilitar(self):
         return self.__habilitar
+    def setNumeroHasbitacion(self,new_numeroHabitacion):
+        self.__numeroHabitacion = new_numeroHabitacion
+    def setIdTipoHabitacion(self,new_idTipoHabitacion):
+        self.__idTipoHabitacion = new_idTipoHabitacion
+    def setCapacidadMax(self,new_capacidadMax):
+        self.__capacidadMax = new_capacidadMax
+    def setOrientacion(self,new_orientacion):
+        self.__orientacion = new_orientacion
+    def setMinPasajero(self,new_minPasajero):
+        self.__minPasajero = new_minPasajero
+    def setHabilitar(self, new_habilitar):
+        self.__habilitar = new_habilitar
+    
     
 
     def verHabitacion(self):
@@ -43,6 +56,20 @@ class Habitacion(DB):
                 return habitaciones
             else:
                 print("No hay habitacion en la base de datos")
+        except Exception as e:
+            print("Error: ", e.args)
+
+    def verHabitacionId(self,id):
+        val = id
+        sql = "SELECT * FROM habitacion WHERE N_HABITACION = %s "
+        try:
+            self.cursor.execute(sql,val)
+            datos = self.cursor.fetchone()
+            if (len(datos) != 0):
+                habitacion = Habitacion(datos[0],datos[1],datos[2],datos[3],datos[4],datos[5])
+                return habitacion
+            else:
+                print("No se encontro la habitacion en la base de datos")
         except Exception as e:
             print("Error: ", e.args)
 
