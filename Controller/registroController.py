@@ -16,7 +16,7 @@ class RegistroController:
     
     def verRegistroId(self,id):
         registro_id = id
-        return self.__registro.verTipoHabitacionId(registro_id)
+        return self.__registro.verRegistroId(registro_id)
 
     def agregarRegistro(self,habitacion,pasajero,diasHospedaje,numeroPersonas,costoAdicionalPorPersona,costoHabitacion):
         numero_habitacion = habitacion.getNumeroHabitacion()
@@ -53,3 +53,4 @@ class RegistroController:
         registro_id = id
         registro = self.__registro.verRegistroId(registro_id)
         self.__registro.quitarRegistro(registro)
+    

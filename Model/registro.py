@@ -78,8 +78,8 @@ class Registro(DB):
             self.cursor.execute(sql,val)
             datos = self.cursor.fetchone()
             if (len(datos) != 0):
-                tipo_habitacion = Registro(datos[0],datos[2],datos[3],datos[4],datos[5],datos[6],datos[7])
-                return tipo_habitacion
+                registro = Registro(datos[0],datos[1],datos[2],datos[3],datos[4],datos[5],datos[6],datos[7])
+                return registro
             else:
                 print("No se encontro el registro en la base de datos")
         except Exception as e:
