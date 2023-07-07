@@ -19,6 +19,12 @@ class TipoHabitacion(DB):
     def getTipoHabitacion(self):
         return self.__tipoHabitacion
     
+    def setIdTipoHabitacion(self,newId):
+        self.__idTipoHabitacion = newId
+    
+    def setTipoHabitacion(self, newNombre):
+        self.__tipoHabitacion = newNombre
+    
     def agregarTipoHabitacion(self,tipoHabitacion):
         val = (tipoHabitacion.getIdTipoHabitacion(),tipoHabitacion.getTipoHabitacion())
         sql = "INSERT INTO tipo_habitacion (ID_TIPO_HABITACION, TIPO_HABITACION) VALUES (%s,%s)"
@@ -42,6 +48,20 @@ class TipoHabitacion(DB):
             else:
                 print("No hay Tipos de habitaciones registrados")
 
+        except Exception as e:
+            print("Error: ", e.args)
+    
+    def verTipoHabitacionId(self,id):
+        val = id
+        sql = "SELECT * FROM tipo_habitacion WHERE ID_TIPO_HABITACION = %s "
+        try:
+            self.cursor.execute(sql,val)
+            datos = self.cursor.fetchone()
+            if (len(datos) != 0):
+                tipo_habitacion = TipoHabitacion(datos[0],datos[1])
+                return tipo_habitacion
+            else:
+                print("No se encontro el tipo habitacion en la base de datos")
         except Exception as e:
             print("Error: ", e.args)
 

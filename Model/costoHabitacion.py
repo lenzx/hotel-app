@@ -21,6 +21,15 @@ class CostoHabitacion(DB):
     
     def getCostoBase(self):
         return self.__costoBase
+    
+    def setIdCostoHabitacion(self,newId):
+        self.__idCostoHabitacion = newId
+    
+    def settIdTipoHabitacion(self,newTipoHabitacion):
+        self.__idTipoHabitacion = newTipoHabitacion
+    
+    def setCostoBase(self,newCostoHabitacion):
+        self.__costoBase = newCostoHabitacion
 
     def agregarCostoHabitacion(self,costoHabitacion):
         val = (costoHabitacion.getIdCostoHabitacion(),costoHabitacion.getIdTipoHabitacion(),costoHabitacion.getCostoBase())
@@ -63,6 +72,20 @@ class CostoHabitacion(DB):
                     costoHabitacion = CostoHabitacion(x[0],x[1],x[2])
                     costoHabitaciones.append(costoHabitacion)
                 return costoHabitaciones
+            else:
+                print("No hay costos asignados")
+        except Exception as e:
+            print("Error: ", e.args)
+
+    def verCostoHabitacionId(self,id):
+        val = id
+        sql = "SELECT * FROM costo_habitacion WHERE ID_COSTO_HABITACION = %s "
+        try:
+            self.cursor.execute(sql)
+            datos = self.cursor.fetchone()
+            if (len(datos) != 0):
+                costoHabitacion = CostoHabitacion(datos[0],datos[1],datos[2])
+                return costoHabitacion
             else:
                 print("No hay costos asignados")
         except Exception as e:

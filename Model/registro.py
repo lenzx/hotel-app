@@ -36,6 +36,23 @@ class Registro(DB):
         return self.__costoAdicionalPersona
     def getCostoTotal(self):
         return self.__costoTotal
+    
+    def setIdRegistro(self,newIdRegistro):
+        self.__idRegistro = newIdRegistro
+    def setNumeroHabitacion(self,newNumeroHabitacion):
+        self.__nHabitacion = newNumeroHabitacion
+    def setRutPasajeroResponsable(self,rutPasajeroResponsable):
+        self.__rutPasajeroResponsable = rutPasajeroResponsable
+    def setFechaAsignacion(self, newFechaAsignacion):
+        self.__fechaAsignacion = newFechaAsignacion
+    def setFechaFin(self, newFechaFin):
+        self.__fechaFin = newFechaFin
+    def setNumeroPersonas(self, newNumeroPersonas):
+        self.__nPersonas = newNumeroPersonas
+    def setCostoAdicionalPorPersona(self, newCostoAdicional):
+        self.__costoAdicionalPersona = newCostoAdicional
+    def setCostoTotal(self, newCostoTotal):
+        self.__costoTotal = newCostoTotal
 
     def verRegistro(self):
         registros = []
@@ -54,6 +71,20 @@ class Registro(DB):
         except Exception as e:
             print("Error: ", e.args)
 
+    def verRegistroId(self,id):
+        val = id
+        sql = "SELECT * FROM registro WHERE ID_REGISTRO = %s "
+        try:
+            self.cursor.execute(sql,val)
+            datos = self.cursor.fetchone()
+            if (len(datos) != 0):
+                tipo_habitacion = Registro(datos[0],datos[2],datos[3],datos[4],datos[5],datos[6],datos[7])
+                return tipo_habitacion
+            else:
+                print("No se encontro el registro en la base de datos")
+        except Exception as e:
+            print("Error: ", e.args)
+
     def agregarRegistro(self,registro):
         val = (registro.getNumeroHabitacion(),registro.getRutPasajeroResponsable(),registro.getFechaAsignacion(),registro.getFechaFin(),registro.getNumeroPersonas(),registro.getCostoAdicionalPorPersona(),registro.getCostoTotal())
         sql = "INSERT INTO registro (N_HABITACION, RUT_PASAJERO_RESPONSABLE, FECHA_ASIGNACION, FECHA_FIN, N_PERSONAS, COSTO_ADICIONAL_PERSONA, COSTO_TOTAL) VALUES (%s,%s,%s,%s,%s,%s,%s)"
@@ -64,7 +95,7 @@ class Registro(DB):
         except Exception as e:
             print("Error: ", e.args)
 
-    def ModificarRegistro(self,registro):
+    def modificarRegistro(self,registro):
         val = (registro.getNumeroHabitacion(),registro.getRutPasajeroResponsable(),registro.getFechaAsignacion(),registro.getFechaFin(),registro.getNumeroPersonas(),registro.getCostoAdicionalPorPersona(),registro.getCostoTotal(),registro.getIdRegistro())
         sql = "UPDATE registro SET N_HABITACION = %s, RUT_PASAJERO_RESPONSABLE = %s, FECHA_ASIGNACION = %s, FECHA_FIN = %s, N_PERSONAS = %s , COSTO_ADICIONAL_PERSONA = %s, COSTO_TOTAL = %s WHERE ID_REGISTRO = %s"
         try:

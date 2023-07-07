@@ -19,6 +19,12 @@ class Pasajero(DB):
     def getNombre(self):
         return self.__nombre
     
+    def setRut(self,newRut):
+        self.__rutPasajero = newRut
+    
+    def setNombre(self,newNombre):
+        self.__nombre = newNombre
+    
     def agregarPasajero(self,pasajero):
         val = (pasajero.getRut(),pasajero.getNombre())
         sql = "INSERT INTO pasajero (RUT_PASAJERO, NOMBRE) VALUES (%s,%s)"

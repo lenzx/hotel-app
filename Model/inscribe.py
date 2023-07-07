@@ -7,14 +7,19 @@ sys.path.append(root_dir)
 from Database.database import DB 
 
 class Inscribe(DB):
-    def __init__(self,idRegistro,rutPasajero):
+    def __init__(self,idInscribe,rutPasajero):
         super().__init__()
-        self.__idRegistro = idRegistro
+        self.__idIscribe = idInscribe
         self.__rutPasajero = rutPasajero
-    def getIdRegistro(self):
-        return self.__idRegistro
+    def getIdInscribe(self):
+        return self.__idIscribe
     def getRutPasajero(self):
         return self.__rutPasajero
+    def setIdInscribe(self,newIdinscribe):
+        self.__idIscribe = newIdinscribe
+    def setRutPasajero(self,newRutPasajero):
+        self.__rutPasajero = newRutPasajero
+    
     
     def verInscribe(self):
         inscripciones = []
