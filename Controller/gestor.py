@@ -6,7 +6,7 @@ root_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.append(root_dir)
 from Controller.costoHabitacionController import CostoHabitacionController
 from Controller.habitacionController import HabitacionController
-from Controller.inscribeController import insc
+from Controller.inscribeController import Inscribe
 from Controller.pasajeroController import PasajeroController
 from Controller.registroController import RegistroController
 from Controller.tipoHabitacionController import TipoHabitacionController

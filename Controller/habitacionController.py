@@ -24,4 +24,21 @@ class HabitacionController:
         habitacion = self.__habitacion.verHabitacionId(numero_habitacion)
         habitacion.setHabilitar(0)
         self.__habitacion.modificarHabitacion(habitacion)
-    
+
+    def modificarHabitacion(self,numeroHabitacion, idTipoHabitacion,capacidadMax,orientacion,minPasajero):
+        numero_habitacion = numeroHabitacion
+        id_tipo_habitacion = idTipoHabitacion
+        capacidad_max = capacidadMax
+        Orienteacion = orientacion
+        min_pasajero = minPasajero
+        habitacion = self.__habitacion.verHabitacionId(numero_habitacion)
+        habitacion.setIdTipoHabitacion(id_tipo_habitacion)
+        habitacion.setCapacidadMax(capacidad_max)
+        habitacion.setOrientacion(Orienteacion)
+        habitacion.setMinPasajero(min_pasajero)
+        self.__habitacion.modificarHabitacion(habitacion)
+    def verHabitacion(self):
+        return self.__habitacion.verHabitacion()
+    def verHabitacionId(self,id):
+        habitacion_id = id
+        return self.__habitacion.verHabitacionId(habitacion_id)

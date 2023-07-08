@@ -9,3 +9,23 @@ from Model.inscribe import Inscribe
 class InscribeController:
     def __init__(self):
         self.__inscribe = Inscribe(None,None)
+    
+    def verInscribe(self):
+        return self.__inscribe.verInscribe()
+    
+    def verInscribeId(self,registroId,personaRut):
+        registro_id = registroId
+        persona_rut = personaRut
+        return self.__inscribe.verInscribeId(registro_id,persona_rut)
+    
+    def agregarIscribe(self,registroId,personaRut):
+        registro_id = registroId
+        persona_rut = personaRut
+        inscribe = Inscribe(registro_id,persona_rut)
+        self.__inscribe.agregarInscribe(inscribe)
+
+    def eliminarInscribe(self,registroId,personaRut):
+        registro_id = registroId
+        persona_rut = personaRut
+        inscribe = self.__inscribe.verInscribeId(registro_id,persona_rut)
+        self.__inscribe.quitarInscribe(inscribe)

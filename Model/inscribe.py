@@ -7,16 +7,16 @@ sys.path.append(root_dir)
 from Database.database import DB 
 
 class Inscribe(DB):
-    def __init__(self,idInscribe,rutPasajero):
+    def __init__(self,idRegistro,rutPasajero):
         super().__init__()
-        self.__idIscribe = idInscribe
+        self.__idRegistro = idRegistro
         self.__rutPasajero = rutPasajero
-    def getIdInscribe(self):
-        return self.__idIscribe
+    def getIdRegistro(self):
+        return self.__idRegistro
     def getRutPasajero(self):
         return self.__rutPasajero
-    def setIdInscribe(self,newIdinscribe):
-        self.__idIscribe = newIdinscribe
+    def setIdRegistro(self,newIdinscribe):
+        self.__idRegistro= newIdinscribe
     def setRutPasajero(self,newRutPasajero):
         self.__rutPasajero = newRutPasajero
     
@@ -34,6 +34,20 @@ class Inscribe(DB):
                 return inscripciones
             else:
                 print("No hay inscripciones registrados")
+        except Exception as e:
+            print("Error: ", e.args)
+    
+    def verInscribeId(self,idRegistro,rutPasajero):
+        val = (idRegistro,rutPasajero)
+        sql = "SELECT * FROM inscribe WHERE ID_REGISTRO = %s AND RUT_PASAJERO = %s "
+        try:
+            self.cursor.execute(sql,val)
+            datos = self.cursor.fetchone()
+            if (len(datos) != 0):
+                inscribe = Inscribe(datos[0],datos[1])
+                return inscribe
+            else:
+                print("No se encontro inscripcion en la base de datos")
         except Exception as e:
             print("Error: ", e.args)
 
